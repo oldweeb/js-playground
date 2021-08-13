@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>JSCalculator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script type="text/javascript">
+        const signs = ['/', '*', '+', '-', '.'];
+        var text;
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            text = document.calculator.text;
+        });
+
+        const toggleSign = () => {
+            text.value = text.value.substring(0, 1) == '-' ?
+                text.value.replace('-', '') : text.value.replace(/^/, '-');
+        };
+
+        const addDigit = (digit) => {
+            text.value = document.calculator.text.value === '0' ?
+                text.value = digit : text.value + digit;
+        };
+
+        const addSign = (sign) => {
+            console.log(text.value.charAt(text.value.length - 1));
+            text.value = signs.includes(text.value.charAt(text.value.length - 1)) ? 
+                text.value : text.value + sign;
+        };
+    </script>
+</head>
+
+<body>
+    <form class="calculator" name="calculator">
+        <input class="value" type="text" name="text" readonly value="0">
+        <span class="clear" onclick="document.calculator.text.value = '0' ">c</span>
+        <span class="num" onclick="addSign('/');">/</span>
+        <span class="num" onclick="addSign('*');">*</span>
+        <span class="num" onclick="addDigit('7');">7</span>
+        <span class="num" onclick="addDigit('8');">8</span>
+        <span class="num" onclick="addDigit('9');">9</span>
+        <span class="num" onclick="addSign('-');">-</span>
+        <span class="num" onclick="addDigit('4');">4</span>
+        <span class="num" onclick="addDigit('5');">5</span>
+        <span class="num" onclick="addDigit('6');">6</span>
+        <span class="plus" onclick="addSign('+');">+</span>
+        <span class="num" onclick="addDigit('1');">1</span>
+        <span class="num" onclick="addDigit('2');">2</span>
+        <span class="num" onclick="addDigit('3');">3</span>
+        <span class="num" onclick="addDigit('0');">0</span>
+        <span class="num" onclick="toggleSign();">&#177;</span>
+        <span class="num" onclick="addSign('.');">.</span>
+        <span class="equal" onclick="document.calculator.text.value = eval(document.calculator.text.value)">=</span>
+    </form>
+
+</body>
+
+</html>
