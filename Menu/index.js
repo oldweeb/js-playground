@@ -128,7 +128,7 @@ const displayButtons = () => {
                 }
             });
             if (category === 'all') {
-                displayMenuItems(menu);
+                displayItems(menu);
             } else {
                 displayItems(menuCategory);
             }
