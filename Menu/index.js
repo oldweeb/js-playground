@@ -82,17 +82,18 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 const displayItems = (items) => {
-    let displayedMenu = items.map((item) => {
-        return `<article class="menu-item">
-                    <img src=${item.img} alt=${item.title} class="photo">
-                    <div class="item-info">
-                        <header>
-                            <h4>${item.title}</h4>
-                            <h4 class="price">$${item.price}</h4>
-                        </header>
-                    </div>
-                </article>`
-    }).join('');
+    let displayedMenu = items.map(
+        (item) => {
+            return `<article class="menu-item">
+                        <img src=${item.img} alt=${item.title} class="photo">
+                        <div class="item-info">
+                            <header>
+                                <h4>${item.title}</h4>
+                                <h4 class="price">$${item.price}</h4>
+                            </header>
+                        </div>
+                    </article>`
+        }).join('');
     itemsContainer.innerHTML = displayedMenu;
 };
 
@@ -114,7 +115,7 @@ const displayButtons = () => {
         }
     ).join('');
     btnContainer.innerHTML = btns;
-    
+
     const filterBtns = btnContainer.querySelectorAll('.filter-btn');
     console.log(filterBtns);
 
@@ -122,14 +123,14 @@ const displayButtons = () => {
         btn.addEventListener('click', (e) => {
             e.preventDefault();
             const category = e.currentTarget.dataset.id;
-            const menuCategory = menu.filter((menuItem) => {
-                if (menuItem.category === category) {
-                    return menuItem;
-                }
-            });
             if (category === 'all') {
                 displayItems(menu);
             } else {
+                const menuCategory = menu.filter((menuItem) => {
+                    if (menuItem.category === category) {
+                        return menuItem;
+                    }
+                });
                 displayItems(menuCategory);
             }
         });
