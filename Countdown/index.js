@@ -31,13 +31,13 @@ const futureDate = new Date(2021, 7, 24, 0, 0, 0);
 
 const year = futureDate.getFullYear();
 const month = months[futureDate.getMonth()];
-const hours = futureDate.getHours();
-const mins = futureDate.getMinutes();
-const secs = futureDate.getSeconds();
+const hours = futureDate.getHours() < 10 ? '0' + futureDate.getHours().toString() : futureDate.getHours();
+const mins = futureDate.getMinutes() < 10 ? '0' + futureDate.getMinutes().toString() : futureDate.getMinutes();
+const secs = futureDate.getSeconds() < 10 ? '0' + futureDate.getSeconds().toString() : futureDate.getSeconds();
 const day = weekDays[futureDate.getDay()];
 const date = futureDate.getDate();
 
-giveaway.textContent = `sales end on ${day} ${date} ${month} ${year} ${hours}:${mins}:${secs}am`;
+giveaway.textContent = `sales end on ${day} ${date} ${month} ${year} ${hours}:${mins}:${secs}`;
 
 //future time in ms
 const futureTime = futureDate.getTime();
